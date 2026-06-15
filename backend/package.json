@@ -12,6 +12,9 @@
     "manage:prod": "dotenv -e .env.production tsx src/manage.ts"
   },
   "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
