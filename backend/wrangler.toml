@@ -1,0 +1,7 @@
+# Wrangler config — scaffolded for a future Cloudflare Workers migration.
+# Not used in Phase 1 (Railway + Node.js).
+# To migrate: swap MongoDB for Cloudflare D1, update db.ts, then deploy with `wrangler deploy`.
+
+name = "learntamileasy-api"
+main = "src/index.ts"
+compatibility_date = "2024-01-01"
