@@ -4,5 +4,4 @@ dist/
 .env.local
 .env.production
 *.local
-backend/uploads/*
-!backend/uploads/.gitkeep
+backend/uploads/.gitkeep
