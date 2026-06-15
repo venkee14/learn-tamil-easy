@@ -7,7 +7,9 @@
     "build": "tsc",
     "start": "node dist/index.js",
     "seed": "tsx src/seed.ts",
-    "manage": "tsx src/manage.ts"
+    "seed:prod": "dotenv -e .env.production tsx src/seed.ts",
+    "manage": "tsx src/manage.ts",
+    "manage:prod": "dotenv -e .env.production tsx src/manage.ts"
   },
   "type": "module",
   "keywords": [],
@@ -24,6 +26,7 @@
   },
   "devDependencies": {
     "@types/node": "^25.9.2",
+    "dotenv-cli": "^11.0.0",
     "tsx": "^4.22.4",
     "typescript": "^6.0.3"
   }
