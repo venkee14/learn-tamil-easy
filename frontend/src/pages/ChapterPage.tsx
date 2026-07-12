@@ -30,7 +30,7 @@ function FlashCard({ block }: { block: ContentBlock }) {
 
       {/* Text */}
       <div className="text-center">
-        <p className="text-6xl font-bold text-indigo-700 mb-2">{block.tamil_text}</p>
+        <p className="text-6xl font-bold text-indigo-700 mb-2" style={{ lineHeight: '1.6' }}>{block.tamil_text}</p>
         {block.transliteration && (
           <p className="text-xl text-gray-500 mb-1">{block.transliteration}</p>
         )}

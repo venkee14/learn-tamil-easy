@@ -6,7 +6,7 @@ export function ParagraphBlock({ block }: { block: ContentBlock }) {
     <div className="p-4 flex items-start gap-3">
       <AudioButton url={block.audio_url} text={block.tamil_text} />
       <div>
-        <p className="text-lg leading-relaxed text-gray-800 whitespace-pre-wrap">
+        <p className="text-lg text-gray-800 whitespace-pre-wrap" style={{ lineHeight: '2.5' }}>
           {block.tamil_text}
         </p>
         {block.translation && (
