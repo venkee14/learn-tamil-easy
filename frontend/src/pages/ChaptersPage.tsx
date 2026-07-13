@@ -19,7 +19,8 @@ export function ChaptersPage() {
           <button
             key={chapter._id}
             onClick={() => navigate(`/chapter/${chapter._id}`)}
-            className="aspect-square rounded-2xl bg-white border-2 border-indigo-100 hover:border-indigo-400 flex items-center justify-center text-4xl font-bold text-indigo-700 shadow-sm transition-colors min-h-[44px]"
+            className="rounded-2xl bg-white border-2 border-indigo-100 hover:border-indigo-400 flex items-center justify-center p-3 font-bold text-indigo-700 shadow-sm transition-colors min-h-[80px] text-center break-words"
+            style={{ fontSize: chapter.title.length <= 3 ? '2.25rem' : chapter.title.length <= 15 ? '1rem' : '0.75rem' }}
           >
             {chapter.title}
           </button>

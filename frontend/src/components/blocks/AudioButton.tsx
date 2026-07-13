@@ -1,22 +1,16 @@
 import { useRef, useState } from 'react'
 
-const API_BASE = import.meta.env.VITE_API_URL ?? 'http://localhost:3001'
-
-export function ttsUrl(text: string) {
-  return `${API_BASE}/api/tts?text=${encodeURIComponent(text)}`
-}
-
 interface Props {
   url?: string
-  text?: string   // used as fallback — calls /api/tts on backend
+  text?: string
 }
 
-export function AudioButton({ url, text }: Props) {
+export function AudioButton({ url }: Props) {
   const ref = useRef<HTMLAudioElement>(null)
   const [playing, setPlaying] = useState(false)
 
-  const src = url ?? (text ? ttsUrl(text) : undefined)
-  if (!src) return null
+  if (!url) return null
+  const src = url
 
   const toggle = () => {
     const el = ref.current
