@@ -9,7 +9,7 @@ export function ChaptersPage() {
   if (isLoading) return <div className="p-8 text-center text-gray-400">Loading...</div>
 
   const firstTitle = chapters?.[0]?.title ?? ''
-  const useListLayout = firstTitle.length > 8 && !firstTitle.includes('—')
+  const useListLayout = firstTitle.length > 8
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-10">
