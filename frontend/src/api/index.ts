@@ -12,6 +12,7 @@ export const api = {
   getLanguages: () => get<Language[]>('/api/languages'),
   getGrades: (languageId: string) => get<Grade[]>(`/api/languages/${languageId}/grades`),
   getUnits: (gradeId: string) => get<Unit[]>(`/api/grades/${gradeId}/units`),
+  getUnit: (unitId: string) => get<Unit>(`/api/units/${unitId}`),
   getChapters: (unitId: string) => get<Chapter[]>(`/api/units/${unitId}/chapters`),
   getChapter: (chapterId: string) => get<ChapterDetail>(`/api/chapters/${chapterId}`),
 }

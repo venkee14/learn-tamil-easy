@@ -24,6 +24,15 @@ app.get('/grades/:id/units', async (c) => {
   return c.json(units)
 })
 
+app.get('/units/:id', async (c) => {
+  const unit = await Unit.findOne({
+    _id: c.req.param('id'),
+    is_archived: false,
+  }).lean()
+  if (!unit) return c.json({ error: 'Not found' }, 404)
+  return c.json(unit)
+})
+
 app.get('/units/:id/chapters', async (c) => {
   const chapters = await Chapter.find({
     unit_id: c.req.param('id'),

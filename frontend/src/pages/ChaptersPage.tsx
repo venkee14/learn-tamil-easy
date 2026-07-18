@@ -1,10 +1,11 @@
 import { useNavigate, useParams } from 'react-router-dom'
-import { useChapters } from '../hooks/index.js'
+import { useChapters, useUnit } from '../hooks/index.js'
 
 export function ChaptersPage() {
   const { unitId } = useParams<{ unitId: string }>()
   const navigate = useNavigate()
   const { data: chapters, isLoading } = useChapters(unitId ?? '')
+  const { data: unit } = useUnit(unitId ?? '')
 
   if (isLoading) return <div className="p-8 text-center text-gray-400">Loading...</div>
 
@@ -13,7 +14,10 @@ export function ChaptersPage() {
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-10">
-      <button onClick={() => navigate(-1)} className="text-indigo-500 mb-6 hover:underline">
+      <button
+        onClick={() => unit && navigate(`/grade/${unit.grade_id}`)}
+        className="text-indigo-500 mb-6 hover:underline"
+      >
         ← Back
       </button>
       <h1 className="text-3xl font-bold text-indigo-700 mb-8">Chapters</h1>

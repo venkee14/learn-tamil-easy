@@ -44,6 +44,7 @@ export interface ChapterDetail extends Chapter {
 
 export interface Unit {
   _id: string
+  grade_id: string
   title: string
   description?: string
   order: number

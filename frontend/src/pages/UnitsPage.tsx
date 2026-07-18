@@ -10,7 +10,7 @@ export function UnitsPage() {
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-10">
-      <button onClick={() => navigate(-1)} className="text-indigo-500 mb-6 hover:underline">
+      <button onClick={() => navigate('/')} className="text-indigo-500 mb-6 hover:underline">
         ← Back
       </button>
       <h1 className="text-3xl font-bold text-indigo-700 mb-8">Units</h1>

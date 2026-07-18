@@ -18,6 +18,13 @@ export const useUnits = (gradeId: string) =>
     enabled: !!gradeId,
   })
 
+export const useUnit = (unitId: string) =>
+  useQuery({
+    queryKey: ['unit', unitId],
+    queryFn: () => api.getUnit(unitId),
+    enabled: !!unitId,
+  })
+
 export const useChapters = (unitId: string) =>
   useQuery({
     queryKey: ['chapters', unitId],
