@@ -2,6 +2,7 @@ import 'dotenv/config'
 import fs from 'fs/promises'
 import path from 'path'
 import mongoose, { Types } from 'mongoose'
+import { EdgeTTS } from 'node-edge-tts'
 import { Language, Grade, Unit, Chapter, Section, ContentBlock } from './models/index.js'
 
 type ObjectId = Types.ObjectId
@@ -35,10 +36,11 @@ const BASE_URL  = process.env.BASE_URL ?? `http://localhost:${process.env.PORT ?
 const AUDIO_DIR = path.join(process.cwd(), 'uploads', 'audio')
 const IMAGE_DIR = path.join(process.cwd(), 'uploads', 'images')
 const WIKI_UA   = 'LearnTamilEasy/1.0 (https://github.com/learntamileasy; contact@learntamileasy.com) Node.js'
-const TTS_UA    = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36'
 
 const sleep = (ms: number) => new Promise<void>((r) => setTimeout(r, ms))
 const safe  = (s: string)  => s.replace(/[^a-z0-9]/gi, '_').toLowerCase()
+
+const tts = new EdgeTTS({ voice: 'ta-IN-PallaviNeural', lang: 'ta-IN', rate: '-10%' })
 
 async function fetchWithRetry(url: string, opts: RequestInit, retries = 3): Promise<Response> {
   for (let i = 0; i < retries; i++) {
@@ -61,12 +63,9 @@ async function downloadAudio(tamilText: string, filename: string): Promise<strin
   const dest = path.join(AUDIO_DIR, filename)
   try { await fs.access(dest); return `${BASE_URL}/uploads/audio/${filename}` } catch {}
 
-  const url = `https://translate.google.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(tamilText)}&tl=ta&client=tw-ob`
   try {
-    const res = await fetchWithRetry(url, { headers: { 'User-Agent': TTS_UA } })
-    if (!res.ok) throw new Error(`${res.status}`)
-    await fs.writeFile(dest, Buffer.from(await res.arrayBuffer()))
-    await sleep(500)
+    await tts.ttsPromise(tamilText, dest)
+    await sleep(200)
     return `${BASE_URL}/uploads/audio/${filename}`
   } catch (e) {
     process.stdout.write(`  ⚠ audio failed for "${tamilText}": ${e}\n`)
