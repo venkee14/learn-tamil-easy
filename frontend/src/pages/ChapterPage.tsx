@@ -218,7 +218,7 @@ export function ChapterPage() {
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-10">
-      <button onClick={() => navigate(-1)} className="text-indigo-500 mb-6 hover:underline text-sm">
+      <button onClick={() => navigate(`/unit/${chapter.unit_id}`)} className="text-indigo-500 mb-6 hover:underline text-sm">
         ← Back to Chapters
       </button>
 
@@ -293,7 +293,7 @@ export function ChapterPage() {
         </div>
       )}
 
-      <button onClick={() => navigate(-1)} className="text-indigo-500 mt-10 hover:underline text-sm">
+      <button onClick={() => navigate(`/unit/${chapter.unit_id}`)} className="text-indigo-500 mt-10 hover:underline text-sm">
         ← Back to Chapters
       </button>
     </div>
