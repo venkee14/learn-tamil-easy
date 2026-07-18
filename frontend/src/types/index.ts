@@ -32,6 +32,7 @@ export interface Section {
 
 export interface Chapter {
   _id: string
+  unit_id: string
   title: string
   order: number
   is_published: boolean

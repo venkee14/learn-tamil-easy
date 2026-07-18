@@ -27,7 +27,7 @@ export function AudioButton({ url }: Props) {
   }
 
   return (
-    <>
+    <div className="flex items-center gap-2">
       <audio ref={ref} onEnded={() => setPlaying(false)} onError={() => setPlaying(false)} />
       <button
         onClick={toggle}
@@ -36,6 +36,12 @@ export function AudioButton({ url }: Props) {
       >
         {playing ? '⏹' : '🔊'}
       </button>
-    </>
+      <button
+        onClick={toggle}
+        className="text-indigo-500 hover:underline text-sm font-medium"
+      >
+        {playing ? 'Stop audio' : 'Click for audio'}
+      </button>
+    </div>
   )
 }

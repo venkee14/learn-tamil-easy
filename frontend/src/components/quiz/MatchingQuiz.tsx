@@ -41,9 +41,6 @@ export function MatchingQuiz({ pairs }: { pairs: ContentBlock[] }) {
 
   return (
     <div key={attempt}>
-      <p className="text-base text-gray-500 mb-4">
-        Tap a Tamil word, then tap its matching meaning.
-      </p>
       <div className="grid grid-cols-2 gap-3">
         {/* Left column: Tamil words */}
         <div className="flex flex-col gap-3">
@@ -56,7 +53,7 @@ export function MatchingQuiz({ pairs }: { pairs: ContentBlock[] }) {
                 onClick={() => handleLeft(pair._id)}
                 disabled={isMatched}
                 className={[
-                  'p-4 rounded-xl border-2 text-xl font-semibold transition-all min-h-[152px]',
+                  'p-4 rounded-xl border-2 text-xl font-semibold transition-all h-[152px] flex items-center justify-center text-center',
                   isMatched
                     ? 'bg-green-50 border-green-300 text-green-700 opacity-60 cursor-default'
                     : isSelected
@@ -81,7 +78,7 @@ export function MatchingQuiz({ pairs }: { pairs: ContentBlock[] }) {
                 onClick={() => handleRight(pair._id)}
                 disabled={isMatched}
                 className={[
-                  'p-2 rounded-xl border-2 transition-all flex items-center justify-center overflow-hidden',
+                  'p-2 rounded-xl border-2 transition-all flex items-center justify-center overflow-hidden h-[152px]',
                   isMatched
                     ? 'bg-green-50 border-green-300 text-green-700 opacity-60 cursor-default'
                     : isWrong
@@ -91,7 +88,7 @@ export function MatchingQuiz({ pairs }: { pairs: ContentBlock[] }) {
               >
                 {pair.image_url ? (
                   pair.image_url.startsWith('http') || pair.image_url.startsWith('/') ? (
-                    <img src={pair.image_url} alt={pair.translation} className="w-full h-36 object-contain rounded-lg" />
+                    <img src={pair.image_url} alt={pair.translation} className="w-full h-full object-contain rounded-lg" />
                   ) : (
                     <span className="text-5xl">{pair.image_url}</span>
                   )
